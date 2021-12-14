@@ -1,0 +1,12 @@
+{
+    "type": "project",
+    "homepage": "https://github.com/paniko/wp-install",
+    "description": "Bootstrap a WordPress site through Composer and WP-CLI",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolo Palmigiano",
+            "email": "nicolo.palmigiano@immedia.net",
+        }
+    ]
+}
