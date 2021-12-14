@@ -1,12 +1,58 @@
 {
+    "name": "paniko/wp-install",
     "type": "project",
     "homepage": "https://github.com/paniko/wp-install",
     "description": "Bootstrap a WordPress site through Composer and WP-CLI",
     "license": "MIT",
+    "keywords": [
+        "WordPress",
+        "bootstrap",
+        "Composer"
+    ],
     "authors": [
         {
             "name": "Nicolo Palmigiano",
             "email": "nicolo.palmigiano@immedia.net"
         }
-    ]
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+        "johnpbloch/wordpress": ">=5.2"
+    },
+    "extra": {
+        "wordpress-install-dir": "wp",
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "installer-paths": {
+            "wp/wp-content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "wp/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wp/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "./install/validate-env-variables.sh"
+        ],
+        "post-create-project-cmd": [
+            "./install/install.sh"
+        ]
+    }
 }
